@@ -1,0 +1,13 @@
+﻿@model DateTime?
+
+@using MetadataProviderExample
+@using Microsoft.AspNet.Mvc.ModelBinding.Metadata
+
+@{ 
+    bool isWorking = ViewData.ModelMetadata.EditFormatString == CultureTable.DateFormat;
+    bool correctMetadataKind = ViewData.ModelMetadata.MetadataKind == ModelMetadataKind.Property;
+}
+
+<div>
+    @ViewData.TemplateInfo.HtmlFieldPrefix: It @(isWorking ? "works!" : "failed!"); MetadataKind: @(correctMetadataKind ? "Property (correct)" : "Type (wrong, info lost)")
+</div>
